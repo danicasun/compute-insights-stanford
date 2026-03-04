@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Test</title>
+</head>
+<body>
+    <h1>JSON Loading Test</h1>
+    <button onclick="testLoad()">Test Load JSON</button>
+    <div id="output"></div>
+
+    <script>
+        async function testLoad() {
+            try {
+                const response = await fetch('./slurm_analysis.json');
+                console.log('Response status:', response.status);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Data loaded:', data);
+                    document.getElementById('output').innerHTML = 
+                        `<pre>Success! Loaded ${data.metadata.total_jobs} jobs</pre>`;
+                } else {
+                    document.getElementById('output').innerHTML = 
+                        `<pre>Error: ${response.status} ${response.statusText}</pre>`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('output').innerHTML = 
+                    `<pre>Error: ${error.message}</pre>`;
+            }
+        }
+    </script>
+</body>
+</html>

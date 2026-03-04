@@ -1,0 +1,2458 @@
+{
+  "metadata": {
+    "total_jobs": 860196,
+    "date_range": {
+      "start": "2024-05-23T15:42:44+00:00",
+      "end": "2025-05-19T23:58:46+00:00",
+      "total_days": 362
+    },
+    "columns_available": {
+      "START": true,
+      "End": true,
+      "Elapsed": true,
+      "NCPUS": true,
+      "State": true
+    }
+  },
+  "runtime_analysis": {
+    "method": "START_End",
+    "statistics": {
+      "count": 840033,
+      "mean": 2.5930043859388063,
+      "std": 10.589686266074493,
+      "min": -0.0008333333333333334,
+      "25%": 0.026111111111111113,
+      "50%": 0.19166666666666668,
+      "75%": 1.0758333333333334,
+      "max": 169.01944444444445
+    }
+  },
+  "job_states": {
+    "total_states": 309,
+    "states": [
+      {
+        "state": "COMPLETED",
+        "count": 573856,
+        "percentage": 66.71
+      },
+      {
+        "state": "FAILED",
+        "count": 166253,
+        "percentage": 19.33
+      },
+      {
+        "state": "TIMEOUT",
+        "count": 31360,
+        "percentage": 3.65
+      },
+      {
+        "state": "CANCELLED_by_336822",
+        "count": 20517,
+        "percentage": 2.39
+      },
+      {
+        "state": "CANCELLED_by_408896",
+        "count": 5944,
+        "percentage": 0.69
+      },
+      {
+        "state": "CANCELLED_by_298078",
+        "count": 5077,
+        "percentage": 0.59
+      },
+      {
+        "state": "CANCELLED_by_332542",
+        "count": 4469,
+        "percentage": 0.52
+      },
+      {
+        "state": "OUT_OF_MEMORY",
+        "count": 4259,
+        "percentage": 0.5
+      },
+      {
+        "state": "CANCELLED_by_313309",
+        "count": 3754,
+        "percentage": 0.44
+      },
+      {
+        "state": "CANCELLED_by_426948",
+        "count": 3355,
+        "percentage": 0.39
+      },
+      {
+        "state": "CANCELLED_by_441625",
+        "count": 3233,
+        "percentage": 0.38
+      },
+      {
+        "state": "CANCELLED_by_445541",
+        "count": 2112,
+        "percentage": 0.25
+      },
+      {
+        "state": "CANCELLED_by_313134",
+        "count": 1793,
+        "percentage": 0.21
+      },
+      {
+        "state": "CANCELLED_by_332115",
+        "count": 1782,
+        "percentage": 0.21
+      },
+      {
+        "state": "CANCELLED_by_405924",
+        "count": 1649,
+        "percentage": 0.19
+      },
+      {
+        "state": "CANCELLED",
+        "count": 1441,
+        "percentage": 0.17
+      },
+      {
+        "state": "CANCELLED_by_43046",
+        "count": 1189,
+        "percentage": 0.14
+      },
+      {
+        "state": "CANCELLED_by_377438",
+        "count": 1130,
+        "percentage": 0.13
+      },
+      {
+        "state": "CANCELLED_by_406306",
+        "count": 878,
+        "percentage": 0.1
+      },
+      {
+        "state": "CANCELLED_by_363637",
+        "count": 867,
+        "percentage": 0.1
+      },
+      {
+        "state": "CANCELLED_by_313307",
+        "count": 793,
+        "percentage": 0.09
+      },
+      {
+        "state": "CANCELLED_by_390871",
+        "count": 761,
+        "percentage": 0.09
+      },
+      {
+        "state": "CANCELLED_by_291932",
+        "count": 678,
+        "percentage": 0.08
+      },
+      {
+        "state": "CANCELLED_by_412798",
+        "count": 594,
+        "percentage": 0.07
+      },
+      {
+        "state": "CANCELLED_by_320359",
+        "count": 543,
+        "percentage": 0.06
+      },
+      {
+        "state": "CANCELLED_by_358371",
+        "count": 497,
+        "percentage": 0.06
+      },
+      {
+        "state": "CANCELLED_by_430512",
+        "count": 478,
+        "percentage": 0.06
+      },
+      {
+        "state": "CANCELLED_by_394145",
+        "count": 473,
+        "percentage": 0.05
+      },
+      {
+        "state": "CANCELLED_by_372767",
+        "count": 471,
+        "percentage": 0.05
+      },
+      {
+        "state": "CANCELLED_by_393153",
+        "count": 460,
+        "percentage": 0.05
+      },
+      {
+        "state": "CANCELLED_by_353580",
+        "count": 426,
+        "percentage": 0.05
+      },
+      {
+        "state": "CANCELLED_by_295908",
+        "count": 425,
+        "percentage": 0.05
+      },
+      {
+        "state": "CANCELLED_by_453329",
+        "count": 418,
+        "percentage": 0.05
+      },
+      {
+        "state": "CANCELLED_by_446478",
+        "count": 417,
+        "percentage": 0.05
+      },
+      {
+        "state": "CANCELLED_by_312595",
+        "count": 414,
+        "percentage": 0.05
+      },
+      {
+        "state": "CANCELLED_by_406345",
+        "count": 411,
+        "percentage": 0.05
+      },
+      {
+        "state": "CANCELLED_by_404659",
+        "count": 402,
+        "percentage": 0.05
+      },
+      {
+        "state": "CANCELLED_by_414163",
+        "count": 384,
+        "percentage": 0.04
+      },
+      {
+        "state": "CANCELLED_by_367187",
+        "count": 363,
+        "percentage": 0.04
+      },
+      {
+        "state": "CANCELLED_by_403802",
+        "count": 356,
+        "percentage": 0.04
+      },
+      {
+        "state": "CANCELLED_by_364150",
+        "count": 350,
+        "percentage": 0.04
+      },
+      {
+        "state": "CANCELLED_by_445858",
+        "count": 322,
+        "percentage": 0.04
+      },
+      {
+        "state": "CANCELLED_by_409594",
+        "count": 316,
+        "percentage": 0.04
+      },
+      {
+        "state": "CANCELLED_by_389748",
+        "count": 308,
+        "percentage": 0.04
+      },
+      {
+        "state": "CANCELLED_by_427006",
+        "count": 308,
+        "percentage": 0.04
+      },
+      {
+        "state": "CANCELLED_by_439104",
+        "count": 308,
+        "percentage": 0.04
+      },
+      {
+        "state": "CANCELLED_by_441050",
+        "count": 288,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_410634",
+        "count": 269,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_394611",
+        "count": 264,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_389896",
+        "count": 264,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_377504",
+        "count": 258,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_314186",
+        "count": 248,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_441048",
+        "count": 244,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_407593",
+        "count": 240,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_403720",
+        "count": 233,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_332297",
+        "count": 223,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_382356",
+        "count": 220,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_408495",
+        "count": 216,
+        "percentage": 0.03
+      },
+      {
+        "state": "CANCELLED_by_428821",
+        "count": 211,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_439122",
+        "count": 208,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_296568",
+        "count": 200,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_0",
+        "count": 194,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_349827",
+        "count": 190,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_449671",
+        "count": 185,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_405232",
+        "count": 184,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_432350",
+        "count": 181,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_408981",
+        "count": 178,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_373289",
+        "count": 171,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_315147",
+        "count": 171,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_439090",
+        "count": 170,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_394097",
+        "count": 162,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_459798",
+        "count": 161,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_375649",
+        "count": 159,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_396628",
+        "count": 152,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_297376",
+        "count": 149,
+        "percentage": 0.02
+      },
+      {
+        "state": "CANCELLED_by_350875",
+        "count": 124,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_403292",
+        "count": 124,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_440901",
+        "count": 123,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_376091",
+        "count": 122,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_428929",
+        "count": 121,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_372602",
+        "count": 116,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_333673",
+        "count": 114,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_443554",
+        "count": 112,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_426605",
+        "count": 111,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_218637",
+        "count": 109,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_370967",
+        "count": 109,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_432226",
+        "count": 109,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_392643",
+        "count": 107,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_457990",
+        "count": 107,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_431492",
+        "count": 104,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_409031",
+        "count": 104,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_443332",
+        "count": 102,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_436043",
+        "count": 101,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_432960",
+        "count": 101,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_390262",
+        "count": 100,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_370236",
+        "count": 99,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_350929",
+        "count": 98,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_389848",
+        "count": 98,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_352625",
+        "count": 96,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_261782",
+        "count": 93,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_410658",
+        "count": 87,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_337769",
+        "count": 85,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_453076",
+        "count": 83,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_332118",
+        "count": 82,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_465128",
+        "count": 81,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_443461",
+        "count": 79,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_411581",
+        "count": 79,
+        "percentage": 0.01
+      },
+      {
+        "state": "NODE_FAIL",
+        "count": 77,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_397192",
+        "count": 76,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_390273",
+        "count": 75,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_390866",
+        "count": 72,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_408748",
+        "count": 72,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_460334",
+        "count": 71,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_441093",
+        "count": 71,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_465489",
+        "count": 69,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_396420",
+        "count": 65,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_445070",
+        "count": 65,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_427185",
+        "count": 64,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_466171",
+        "count": 63,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_394499",
+        "count": 63,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_374307",
+        "count": 61,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_437213",
+        "count": 61,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_392394",
+        "count": 61,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_439761",
+        "count": 61,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_447427",
+        "count": 60,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_391179",
+        "count": 58,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_432942",
+        "count": 58,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_352710",
+        "count": 58,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_446674",
+        "count": 58,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_396640",
+        "count": 55,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_352607",
+        "count": 54,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_416075",
+        "count": 54,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_351069",
+        "count": 53,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_273471",
+        "count": 50,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_344696",
+        "count": 47,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_408126",
+        "count": 47,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_313293",
+        "count": 47,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_390345",
+        "count": 45,
+        "percentage": 0.01
+      },
+      {
+        "state": "CANCELLED_by_463918",
+        "count": 43,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_408443",
+        "count": 43,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_454303",
+        "count": 42,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_394365",
+        "count": 41,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_418796",
+        "count": 41,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_451110",
+        "count": 41,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_313386",
+        "count": 41,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_449516",
+        "count": 41,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_421232",
+        "count": 41,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_458543",
+        "count": 40,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_52644",
+        "count": 40,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_411015",
+        "count": 39,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_290478",
+        "count": 39,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_356577",
+        "count": 39,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_296043",
+        "count": 38,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_373626",
+        "count": 38,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_393877",
+        "count": 38,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_432481",
+        "count": 36,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_430163",
+        "count": 36,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_448371",
+        "count": 36,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_451876",
+        "count": 35,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_412769",
+        "count": 35,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_344902",
+        "count": 35,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_390341",
+        "count": 35,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_362778",
+        "count": 35,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_308863",
+        "count": 35,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_316697",
+        "count": 34,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_353521",
+        "count": 33,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_390240",
+        "count": 33,
+        "percentage": 0.0
+      },
+      {
+        "state": "REQUEUED",
+        "count": 32,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_401340",
+        "count": 32,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_398",
+        "count": 32,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_449536",
+        "count": 29,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_391488",
+        "count": 27,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_351362",
+        "count": 26,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_401744",
+        "count": 25,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_390869",
+        "count": 25,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_460744",
+        "count": 25,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_337401",
+        "count": 25,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_375943",
+        "count": 24,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_317271",
+        "count": 24,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_313372",
+        "count": 23,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_426562",
+        "count": 23,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_399684",
+        "count": 23,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_429975",
+        "count": 22,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_431494",
+        "count": 22,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_351841",
+        "count": 22,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_459140",
+        "count": 21,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_406628",
+        "count": 21,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_408474",
+        "count": 20,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_428156",
+        "count": 19,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_466517",
+        "count": 19,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_428833",
+        "count": 19,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_460338",
+        "count": 18,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_386892",
+        "count": 18,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_341689",
+        "count": 18,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_392969",
+        "count": 17,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_401327",
+        "count": 16,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_376568",
+        "count": 16,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_446676",
+        "count": 16,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_414793",
+        "count": 16,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_465166",
+        "count": 15,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_411809",
+        "count": 15,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_373825",
+        "count": 14,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_460645",
+        "count": 14,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_361380",
+        "count": 14,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_422445",
+        "count": 13,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_351914",
+        "count": 13,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_431710",
+        "count": 13,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_461159",
+        "count": 12,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_453267",
+        "count": 12,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_449547",
+        "count": 12,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_440758",
+        "count": 12,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_428923",
+        "count": 11,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_292101",
+        "count": 10,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_395390",
+        "count": 10,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_405092",
+        "count": 10,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_437005",
+        "count": 10,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_412958",
+        "count": 10,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_332219",
+        "count": 10,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_372102",
+        "count": 9,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_389400",
+        "count": 9,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_419763",
+        "count": 9,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_331495",
+        "count": 9,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_443551",
+        "count": 9,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_429591",
+        "count": 9,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_429781",
+        "count": 9,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_457819",
+        "count": 9,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_347179",
+        "count": 8,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_359337",
+        "count": 8,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_449542",
+        "count": 8,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_433260",
+        "count": 8,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_452553",
+        "count": 8,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_357409",
+        "count": 8,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_402579",
+        "count": 8,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_440010",
+        "count": 8,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_241424",
+        "count": 7,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_334253",
+        "count": 7,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_427158",
+        "count": 7,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_352004",
+        "count": 7,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_411613",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_449870",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_389883",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_50634",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_451998",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_333092",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_417167",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_378256",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_445369",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_446789",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_349857",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_389932",
+        "count": 6,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_459969",
+        "count": 5,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_407838",
+        "count": 5,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_389880",
+        "count": 5,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_428805",
+        "count": 5,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_471142",
+        "count": 5,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_357526",
+        "count": 5,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_336280",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_414302",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_462735",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_433244",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_356691",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_433045",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_257483",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_343246",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_457952",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_408303",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_215845",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_387558",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_442747",
+        "count": 4,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_434223",
+        "count": 3,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_409873",
+        "count": 3,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_452828",
+        "count": 3,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_370315",
+        "count": 3,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_378065",
+        "count": 3,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_388882",
+        "count": 3,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_465948",
+        "count": 3,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_440604",
+        "count": 3,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_335231",
+        "count": 3,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_449604",
+        "count": 3,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_389451",
+        "count": 3,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_409428",
+        "count": 2,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_432263",
+        "count": 2,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_379555",
+        "count": 2,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_445082",
+        "count": 2,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_451634",
+        "count": 2,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_444121",
+        "count": 2,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_432575",
+        "count": 2,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_408262",
+        "count": 2,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_458515",
+        "count": 2,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_430079",
+        "count": 2,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_460616",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_442277",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_408935",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_432323",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_394497",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_336452",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_297368",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_453687",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_351333",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_333204",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_30921",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_410907",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_20673",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_458064",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_391937",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_437185",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_58678",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_410175",
+        "count": 1,
+        "percentage": 0.0
+      },
+      {
+        "state": "CANCELLED_by_375593",
+        "count": 1,
+        "percentage": 0.0
+      }
+    ]
+  },
+  "resource_usage": {
+    "cpu_hours": {
+      "total": 42884667.51888889,
+      "average_per_job": 49.85453026855378
+    },
+    "cpu_cores": {
+      "statistics": {
+        "mean": 8.986243832800897,
+        "std": 27.974071367498023,
+        "min": 0,
+        "25%": 1.0,
+        "50%": 2.0,
+        "75%": 6.0,
+        "max": 3200
+      }
+    }
+  },
+  "user_analysis": {
+    "total_users": 336,
+    "top_users": [
+      {
+        "user_id": "fkj7kA7bEzVhm8C6BVGUXvch27Aj+hCNGXZD316hZXc=",
+        "job_count": 108982,
+        "percentage": 12.669438128054535
+      },
+      {
+        "user_id": "f6hhwgOt7096phooRdxMzDVuGSsDm7OP85mumZAJ+eE=",
+        "job_count": 93321,
+        "percentage": 10.848806551065106
+      },
+      {
+        "user_id": "I3gifkw/qZ6VVFklYyS14zSGHIaQFZabQLnZRt6is4A=",
+        "job_count": 78650,
+        "percentage": 9.143265023320266
+      },
+      {
+        "user_id": "BwulXLjJhecqquu9kDLXg91aIExIiEB0sgKW+g/ePSs=",
+        "job_count": 69395,
+        "percentage": 8.067347441745834
+      },
+      {
+        "user_id": "/km+BykI5aCaUJ0ADnSQ9v22FYmDmfQuyaidHYlQ/d4=",
+        "job_count": 42958,
+        "percentage": 4.993978116615283
+      },
+      {
+        "user_id": "9LJztk26pGWGINkUnoSRR3jjOILIfuUtexgBnnEpS18=",
+        "job_count": 29550,
+        "percentage": 3.435263591088543
+      },
+      {
+        "user_id": "RehexdMEWG4chVdskN32M/li08PvxkoHe5Z3PCjMIA8=",
+        "job_count": 24877,
+        "percentage": 2.8920153081390754
+      },
+      {
+        "user_id": "sBCB6guqHI+/vGorq14qlKs7CnUscf/7zkE5Av5N94M=",
+        "job_count": 24632,
+        "percentage": 2.863533427265414
+      },
+      {
+        "user_id": "6SW9KQFVSuf+LCsqptkYpcKwn9GApC7UiT0Jr5o/HNg=",
+        "job_count": 22707,
+        "percentage": 2.639747220400932
+      },
+      {
+        "user_id": "8uFWReEZn3BMs1Yz/zpELNYeRnaUnF8HPKt40cbP4jE=",
+        "job_count": 21944,
+        "percentage": 2.551046505680101
+      },
+      {
+        "user_id": "4gXk2FzpwJw1EPibgSbazU/Z/iOTzorBXJxmy3VGDp0=",
+        "job_count": 20391,
+        "percentage": 2.370506256713586
+      },
+      {
+        "user_id": "sNmMMXufUvhetNOdMtGlHZiVoLi6TkDURbm8tsqOg9c=",
+        "job_count": 15002,
+        "percentage": 1.744021130068031
+      },
+      {
+        "user_id": "44DVwpovwTZtriEC6KFMlwT6kbV5h4G8mnc2gJIKKG4=",
+        "job_count": 12981,
+        "percentage": 1.5090746760040736
+      },
+      {
+        "user_id": "NTNeqQASgtLPi5ViBwVUtPNK+utZOPRyTOXWw3r6PUQ=",
+        "job_count": 12671,
+        "percentage": 1.4730363777557673
+      },
+      {
+        "user_id": "JfFt8YR6AKp8NiyEXh1nXlsousYKhea4lo2xzX1BE/s=",
+        "job_count": 11422,
+        "percentage": 1.3278369115875917
+      },
+      {
+        "user_id": "pxCnqT5LlUDsP0owFARyv95GGz6VEfdHqyAyaottL2k=",
+        "job_count": 10526,
+        "percentage": 1.2236746043924873
+      },
+      {
+        "user_id": "boQOIAP8I2yndEPOHYQGZXpqIPE8ZygFgct3yjCEg3g=",
+        "job_count": 9825,
+        "percentage": 1.1421815493213174
+      },
+      {
+        "user_id": "h+YTFBz8ERKUKq8A1wIrWkvFuG0VQ/T1ixgMF5EzULo=",
+        "job_count": 7968,
+        "percentage": 0.9263005175564639
+      },
+      {
+        "user_id": "vmlSpNyfXITwuuouEyBmKVe4564R83jtYw7oS3hQhJA=",
+        "job_count": 7540,
+        "percentage": 0.8765444154588024
+      },
+      {
+        "user_id": "h1BUW2oO0OCdClWRT+7Cf+j0yraips5hph/Cka6Ssw4=",
+        "job_count": 7201,
+        "percentage": 0.8371347925356546
+      }
+    ]
+  },
+  "partition_analysis": {
+    "total_partitions": 1,
+    "partitions": [
+      {
+        "partition": "serc",
+        "count": 860196,
+        "percentage": 100.0
+      }
+    ]
+  },
+  "gpu_analysis": {
+    "statistics": {
+      "mean": 0.0547340373589275,
+      "std": 0.39705349358024783,
+      "min": 0,
+      "25%": 0.0,
+      "50%": 0.0,
+      "75%": 0.0,
+      "max": 27
+    },
+    "gpu_jobs": {
+      "count": 32214,
+      "percentage": 3.744960450873987
+    }
+  },
+  "daily_patterns": {
+    "dates": [
+      "2024-05-23",
+      "2024-05-24",
+      "2024-05-25",
+      "2024-05-26",
+      "2024-05-27",
+      "2024-05-28",
+      "2024-05-29",
+      "2024-05-30",
+      "2024-05-31",
+      "2024-06-01",
+      "2024-06-02",
+      "2024-06-03",
+      "2024-06-04",
+      "2024-06-05",
+      "2024-06-06",
+      "2024-06-07",
+      "2024-06-08",
+      "2024-06-09",
+      "2024-06-10",
+      "2024-06-11",
+      "2024-06-12",
+      "2024-06-13",
+      "2024-06-14",
+      "2024-06-15",
+      "2024-06-16",
+      "2024-06-17",
+      "2024-06-18",
+      "2024-06-19",
+      "2024-06-20",
+      "2024-06-21",
+      "2024-06-22",
+      "2024-06-23",
+      "2024-06-24",
+      "2024-06-25",
+      "2024-06-26",
+      "2024-06-27",
+      "2024-06-28",
+      "2024-06-29",
+      "2024-06-30",
+      "2024-07-01",
+      "2024-07-02",
+      "2024-07-03",
+      "2024-07-04",
+      "2024-07-05",
+      "2024-07-06",
+      "2024-07-07",
+      "2024-07-08",
+      "2024-07-09",
+      "2024-07-10",
+      "2024-07-11",
+      "2024-07-12",
+      "2024-07-13",
+      "2024-07-14",
+      "2024-07-15",
+      "2024-07-16",
+      "2024-07-17",
+      "2024-07-18",
+      "2024-07-19",
+      "2024-07-20",
+      "2024-07-21",
+      "2024-07-22",
+      "2024-07-23",
+      "2024-07-24",
+      "2024-07-25",
+      "2024-07-26",
+      "2024-07-27",
+      "2024-07-28",
+      "2024-07-29",
+      "2024-07-30",
+      "2024-07-31",
+      "2024-08-01",
+      "2024-08-02",
+      "2024-08-03",
+      "2024-08-04",
+      "2024-08-05",
+      "2024-08-06",
+      "2024-08-07",
+      "2024-08-08",
+      "2024-08-09",
+      "2024-08-10",
+      "2024-08-11",
+      "2024-08-12",
+      "2024-08-13",
+      "2024-08-14",
+      "2024-08-15",
+      "2024-08-16",
+      "2024-08-17",
+      "2024-08-18",
+      "2024-08-19",
+      "2024-08-20",
+      "2024-08-21",
+      "2024-08-22",
+      "2024-08-23",
+      "2024-08-24",
+      "2024-08-25",
+      "2024-08-26",
+      "2024-08-27",
+      "2024-08-28",
+      "2024-08-29",
+      "2024-08-30",
+      "2024-08-31",
+      "2024-09-01",
+      "2024-09-02",
+      "2024-09-03",
+      "2024-09-04",
+      "2024-09-05",
+      "2024-09-06",
+      "2024-09-07",
+      "2024-09-08",
+      "2024-09-09",
+      "2024-09-10",
+      "2024-09-11",
+      "2024-09-12",
+      "2024-09-13",
+      "2024-09-14",
+      "2024-09-15",
+      "2024-09-16",
+      "2024-09-17",
+      "2024-09-18",
+      "2024-09-19",
+      "2024-09-20",
+      "2024-09-21",
+      "2024-09-22",
+      "2024-09-23",
+      "2024-09-24",
+      "2024-09-25",
+      "2024-09-26",
+      "2024-09-27",
+      "2024-09-28",
+      "2024-09-29",
+      "2024-09-30",
+      "2024-10-01",
+      "2024-10-02",
+      "2024-10-03",
+      "2024-10-04",
+      "2024-10-05",
+      "2024-10-06",
+      "2024-10-07",
+      "2024-10-08",
+      "2024-10-09",
+      "2024-10-10",
+      "2024-10-11",
+      "2024-10-12",
+      "2024-10-13",
+      "2024-10-14",
+      "2024-10-15",
+      "2024-10-16",
+      "2024-10-17",
+      "2024-10-18",
+      "2024-10-19",
+      "2024-10-20",
+      "2024-10-21",
+      "2024-10-22",
+      "2024-10-23",
+      "2024-10-24",
+      "2024-10-25",
+      "2024-10-26",
+      "2024-10-27",
+      "2024-10-28",
+      "2024-10-29",
+      "2024-10-30",
+      "2024-10-31",
+      "2024-11-01",
+      "2024-11-02",
+      "2024-11-03",
+      "2024-11-04",
+      "2024-11-05",
+      "2024-11-06",
+      "2024-11-07",
+      "2024-11-08",
+      "2024-11-09",
+      "2024-11-10",
+      "2024-11-11",
+      "2024-11-12",
+      "2024-11-13",
+      "2024-11-14",
+      "2024-11-15",
+      "2024-11-16",
+      "2024-11-17",
+      "2024-11-18",
+      "2024-11-19",
+      "2024-11-20",
+      "2024-11-21",
+      "2024-11-22",
+      "2024-11-23",
+      "2024-11-24",
+      "2024-11-25",
+      "2024-11-26",
+      "2024-11-27",
+      "2024-11-28",
+      "2024-11-29",
+      "2024-11-30",
+      "2024-12-01",
+      "2024-12-02",
+      "2024-12-03",
+      "2024-12-04",
+      "2024-12-05",
+      "2024-12-06",
+      "2024-12-07",
+      "2024-12-08",
+      "2024-12-09",
+      "2024-12-10",
+      "2024-12-11",
+      "2024-12-12",
+      "2024-12-13",
+      "2024-12-14",
+      "2024-12-15",
+      "2024-12-16",
+      "2024-12-17",
+      "2024-12-18",
+      "2024-12-19",
+      "2024-12-20",
+      "2024-12-21",
+      "2024-12-22",
+      "2024-12-23",
+      "2024-12-24",
+      "2024-12-25",
+      "2024-12-26",
+      "2024-12-27",
+      "2024-12-28",
+      "2024-12-29",
+      "2024-12-30",
+      "2024-12-31",
+      "2025-01-01",
+      "2025-01-02",
+      "2025-01-03",
+      "2025-01-04",
+      "2025-01-05",
+      "2025-01-06",
+      "2025-01-07",
+      "2025-01-08",
+      "2025-01-09",
+      "2025-01-10",
+      "2025-01-11",
+      "2025-01-12",
+      "2025-01-13",
+      "2025-01-14",
+      "2025-01-15",
+      "2025-01-16",
+      "2025-01-17",
+      "2025-01-18",
+      "2025-01-19",
+      "2025-01-20",
+      "2025-01-21",
+      "2025-01-22",
+      "2025-01-23",
+      "2025-01-24",
+      "2025-01-25",
+      "2025-01-26",
+      "2025-01-27",
+      "2025-01-28",
+      "2025-01-29",
+      "2025-01-30",
+      "2025-01-31",
+      "2025-02-01",
+      "2025-02-02",
+      "2025-02-03",
+      "2025-02-04",
+      "2025-02-05",
+      "2025-02-06",
+      "2025-02-07",
+      "2025-02-08",
+      "2025-02-09",
+      "2025-02-10",
+      "2025-02-11",
+      "2025-02-12",
+      "2025-02-13",
+      "2025-02-14",
+      "2025-02-15",
+      "2025-02-16",
+      "2025-02-17",
+      "2025-02-18",
+      "2025-02-19",
+      "2025-02-20",
+      "2025-02-21",
+      "2025-02-22",
+      "2025-02-23",
+      "2025-02-24",
+      "2025-02-25",
+      "2025-02-26",
+      "2025-02-27",
+      "2025-02-28",
+      "2025-03-01",
+      "2025-03-02",
+      "2025-03-03",
+      "2025-03-04",
+      "2025-03-05",
+      "2025-03-06",
+      "2025-03-07",
+      "2025-03-08",
+      "2025-03-09",
+      "2025-03-10",
+      "2025-03-11",
+      "2025-03-12",
+      "2025-03-13",
+      "2025-03-14",
+      "2025-03-15",
+      "2025-03-16",
+      "2025-03-17",
+      "2025-03-18",
+      "2025-03-19",
+      "2025-03-20",
+      "2025-03-21",
+      "2025-03-22",
+      "2025-03-23",
+      "2025-03-24",
+      "2025-03-25",
+      "2025-03-26",
+      "2025-03-27",
+      "2025-03-28",
+      "2025-03-29",
+      "2025-03-30",
+      "2025-03-31",
+      "2025-04-01",
+      "2025-04-02",
+      "2025-04-03",
+      "2025-04-04",
+      "2025-04-05",
+      "2025-04-06",
+      "2025-04-07",
+      "2025-04-08",
+      "2025-04-09",
+      "2025-04-10",
+      "2025-04-11",
+      "2025-04-12",
+      "2025-04-13",
+      "2025-04-14",
+      "2025-04-15",
+      "2025-04-16",
+      "2025-04-17",
+      "2025-04-18",
+      "2025-04-19",
+      "2025-04-20",
+      "2025-04-21",
+      "2025-04-22",
+      "2025-04-23",
+      "2025-04-24",
+      "2025-04-25",
+      "2025-04-26",
+      "2025-04-27",
+      "2025-04-28",
+      "2025-04-29",
+      "2025-04-30",
+      "2025-05-01",
+      "2025-05-02",
+      "2025-05-03",
+      "2025-05-04",
+      "2025-05-05",
+      "2025-05-06",
+      "2025-05-07",
+      "2025-05-08",
+      "2025-05-09",
+      "2025-05-10",
+      "2025-05-11",
+      "2025-05-12",
+      "2025-05-13",
+      "2025-05-14",
+      "2025-05-15",
+      "2025-05-16",
+      "2025-05-17",
+      "2025-05-18",
+      "2025-05-19"
+    ],
+    "job_counts": [
+      2,
+      10,
+      8,
+      4,
+      7,
+      910,
+      7825,
+      8965,
+      7062,
+      2548,
+      4890,
+      7247,
+      8114,
+      3433,
+      2972,
+      3889,
+      4519,
+      3448,
+      1870,
+      3883,
+      2948,
+      2764,
+      4671,
+      9591,
+      2017,
+      2451,
+      2273,
+      3409,
+      1769,
+      1927,
+      2117,
+      718,
+      4944,
+      4682,
+      1819,
+      1666,
+      4222,
+      2297,
+      5067,
+      10879,
+      3830,
+      1792,
+      2613,
+      1324,
+      1318,
+      5300,
+      5492,
+      3042,
+      4526,
+      4459,
+      2721,
+      791,
+      878,
+      1020,
+      732,
+      1682,
+      6185,
+      1823,
+      823,
+      2073,
+      3596,
+      9535,
+      1093,
+      951,
+      5987,
+      3064,
+      6054,
+      2019,
+      3522,
+      1242,
+      1218,
+      1566,
+      2798,
+      2269,
+      9626,
+      2987,
+      1236,
+      492,
+      379,
+      806,
+      1751,
+      1302,
+      909,
+      752,
+      637,
+      647,
+      475,
+      270,
+      1229,
+      750,
+      647,
+      453,
+      1083,
+      1075,
+      2446,
+      3137,
+      1991,
+      3840,
+      4706,
+      2394,
+      159,
+      361,
+      285,
+      4548,
+      4470,
+      8655,
+      1233,
+      1217,
+      1724,
+      1667,
+      1895,
+      904,
+      409,
+      835,
+      334,
+      515,
+      6177,
+      4969,
+      7413,
+      2213,
+      531,
+      294,
+      1228,
+      1378,
+      764,
+      1262,
+      740,
+      697,
+      537,
+      667,
+      725,
+      642,
+      223,
+      2736,
+      2675,
+      239,
+      10599,
+      3011,
+      4433,
+      805,
+      924,
+      488,
+      2903,
+      2127,
+      1382,
+      1291,
+      853,
+      1008,
+      948,
+      1184,
+      644,
+      596,
+      427,
+      672,
+      628,
+      1314,
+      1471,
+      2307,
+      2879,
+      1347,
+      1343,
+      1381,
+      4480,
+      237,
+      597,
+      2730,
+      2079,
+      5114,
+      4257,
+      4944,
+      4362,
+      1632,
+      2123,
+      1729,
+      3957,
+      2421,
+      1391,
+      343,
+      614,
+      1348,
+      1019,
+      1056,
+      1817,
+      1064,
+      926,
+      1472,
+      3999,
+      2194,
+      2367,
+      6316,
+      6514,
+      805,
+      530,
+      982,
+      2221,
+      1024,
+      2960,
+      2191,
+      3585,
+      327,
+      434,
+      1067,
+      2656,
+      2366,
+      600,
+      1568,
+      2986,
+      2401,
+      784,
+      1644,
+      2508,
+      3860,
+      1268,
+      2661,
+      1753,
+      1472,
+      742,
+      3865,
+      1161,
+      894,
+      1921,
+      732,
+      2479,
+      4636,
+      4406,
+      3416,
+      5156,
+      4414,
+      3907,
+      3554,
+      1362,
+      3250,
+      3929,
+      3571,
+      2969,
+      4546,
+      3815,
+      3929,
+      2124,
+      1177,
+      3346,
+      1189,
+      2096,
+      6190,
+      4170,
+      2230,
+      1581,
+      2560,
+      2440,
+      5106,
+      2017,
+      918,
+      1829,
+      1671,
+      1815,
+      8294,
+      2608,
+      5402,
+      3285,
+      4677,
+      1478,
+      1793,
+      1762,
+      1592,
+      1312,
+      2173,
+      3251,
+      541,
+      260,
+      434,
+      1059,
+      874,
+      1709,
+      3036,
+      3470,
+      3343,
+      3911,
+      11722,
+      2111,
+      1890,
+      2374,
+      886,
+      1305,
+      940,
+      1802,
+      1093,
+      2222,
+      569,
+      518,
+      955,
+      802,
+      1627,
+      1473,
+      797,
+      1358,
+      1909,
+      590,
+      706,
+      1426,
+      1771,
+      1061,
+      3077,
+      1612,
+      2529,
+      2247,
+      749,
+      1446,
+      2441,
+      2008,
+      1496,
+      2123,
+      958,
+      4814,
+      2464,
+      1982,
+      2283,
+      3405,
+      2076,
+      1626,
+      1219,
+      1759,
+      998,
+      797,
+      758,
+      376,
+      272,
+      2710,
+      1100,
+      1031,
+      3609,
+      2687,
+      542,
+      663,
+      1676,
+      6134,
+      2221,
+      3056,
+      1725,
+      608,
+      448,
+      961,
+      1848,
+      3020,
+      1989,
+      727,
+      1197,
+      986,
+      865,
+      1291,
+      1256,
+      1119,
+      929,
+      2319,
+      861,
+      2187,
+      2053,
+      3211,
+      2040,
+      4218,
+      2546,
+      2223,
+      1942
+    ],
+    "average_jobs_per_day": 2376.232044198895
+  }
+}

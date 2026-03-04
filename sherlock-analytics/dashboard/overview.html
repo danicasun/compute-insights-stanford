@@ -1,0 +1,129 @@
+<!-- Overview Tab Content -->
+<div class="overview-section">
+    <div class="overview-card">
+        <div class="card-icon">
+            <i class="fas fa-server"></i>
+        </div>
+        <div class="card-content">
+            <h3>Total Jobs</h3>
+            <div class="metric-value" id="totalJobs">-</div>
+        </div>
+    </div>
+
+    <div class="overview-card">
+        <div class="card-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="card-content">
+            <h3>Success Rate</h3>
+            <div class="metric-value" id="successRate">-</div>
+        </div>
+    </div>
+
+    <div class="overview-card">
+        <div class="card-icon">
+            <i class="fas fa-microchip"></i>
+        </div>
+        <div class="card-content">
+            <h3>Total CPU Hours</h3>
+            <div class="metric-value" id="totalCpuHours">-</div>
+        </div>
+    </div>
+
+    <div class="overview-card">
+        <div class="card-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="card-content">
+            <h3>Active Users</h3>
+            <div class="metric-value" id="activeUsers">-</div>
+        </div>
+    </div>
+</div>
+
+<!-- Key Metrics Grid -->
+<div class="metrics-grid">
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-info-circle"></i> Cluster Information</h3>
+        </div>
+        <div class="card-body">
+            <div class="metric-row">
+                <span>Date Range:</span>
+                <span id="dateRange">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Total Days:</span>
+                <span id="totalDays">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Partition:</span>
+                <span id="partition">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Average Jobs/Day:</span>
+                <span id="avgJobsPerDay">-</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-exclamation-triangle"></i> Issues & Alerts</h3>
+        </div>
+        <div class="card-body">
+            <div class="metric-row">
+                <span>Success Rate:</span>
+                <span id="successRateDisplay">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Failure Rate:</span>
+                <span id="failureRate">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Timeout Rate:</span>
+                <span id="timeoutRate">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Memory Issues:</span>
+                <span id="memoryIssues">-</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-microchip"></i> Resource Summary</h3>
+        </div>
+        <div class="card-body">
+            <div class="metric-row">
+                <span>Total CPU Hours:</span>
+                <span id="totalCpuHoursDisplay">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Avg CPU Cores:</span>
+                <span id="avgCpuCoresDisplay">-</span>
+            </div>
+            <div class="metric-row">
+                <span>GPU Usage:</span>
+                <span id="gpuUsageDisplay">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Active Users:</span>
+                <span id="activeUsersDisplay">-</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Job States Chart -->
+<div class="chart-container full-width">
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-chart-pie"></i> Job States Distribution</h3>
+        </div>
+        <div class="card-body">
+            <canvas id="jobStatesChart"></canvas>
+        </div>
+    </div>
+</div>

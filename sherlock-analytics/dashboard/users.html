@@ -1,0 +1,50 @@
+<!-- Users Tab Content -->
+<div class="charts-section">
+    <div class="chart-container">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-chart-pie"></i> Top Users by Job Count</h3>
+            </div>
+            <div class="card-body">
+                <canvas id="topUsersChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-chart-line"></i> User Activity Over Time</h3>
+            </div>
+            <div class="card-body">
+                <canvas id="userActivityChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="metrics-grid">
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-users"></i> User Statistics</h3>
+        </div>
+        <div class="card-body">
+            <div class="metric-row">
+                <span>Total Users:</span>
+                <span id="totalUsers">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Active Users (>100 jobs):</span>
+                <span id="activeUsersCount">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Top User Jobs:</span>
+                <span id="topUserJobs">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Average Jobs/User:</span>
+                <span id="avgJobsPerUser">-</span>
+            </div>
+        </div>
+    </div>
+</div>

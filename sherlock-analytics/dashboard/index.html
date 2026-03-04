@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stanford Sherlock SLURM Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-server"></i> Stanford Sherlock SLURM Dashboard</h1>
+                <p class="subtitle">Real-time cluster performance and job analytics</p>
+            </div>
+            <div class="header-actions">
+                <button id="refreshBtn" class="btn btn-primary">
+                    <i class="fas fa-sync-alt"></i> Refresh Data
+                </button>
+                <div class="data-status" id="dataStatus" style="display: none; margin-left: 1rem; padding: 0.5rem 1rem; background: #10B981; color: white; border-radius: 6px; font-size: 0.9rem;">
+                    <i class="fas fa-check-circle"></i> Data Loaded
+                </div>
+                <div class="last-updated">
+                    <i class="fas fa-clock"></i>
+                    <span id="lastUpdated">Loading...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="overview">
+                <i class="fas fa-chart-pie"></i> Overview
+            </button>
+            <button class="tab-btn" data-tab="performance">
+                <i class="fas fa-tachometer-alt"></i> Performance
+            </button>
+            <button class="tab-btn" data-tab="resources">
+                <i class="fas fa-microchip"></i> Resources
+            </button>
+            <button class="tab-btn" data-tab="users">
+                <i class="fas fa-users"></i> Users
+            </button>
+            <button class="tab-btn" data-tab="trends">
+                <i class="fas fa-chart-line"></i> Trends
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Overview Tab -->
+            <section id="overview" class="tab-content active">
+                <div id="overview-content">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Performance Tab -->
+            <section id="performance" class="tab-content">
+                <div id="performance-content">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Resources Tab -->
+            <section id="resources" class="tab-content">
+                <div id="resources-content">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Users Tab -->
+            <section id="users" class="tab-content">
+                <div id="users-content">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Trends Tab -->
+            <section id="trends" class="tab-content">
+                <div id="trends-content">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading SLURM data...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

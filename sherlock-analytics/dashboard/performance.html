@@ -1,0 +1,70 @@
+<!-- Performance Tab Content -->
+<div class="charts-section">
+    <div class="chart-container">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-chart-bar"></i> Job Runtime Distribution</h3>
+            </div>
+            <div class="card-body">
+                <canvas id="runtimeChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-chart-line"></i> Daily Job Volume</h3>
+            </div>
+            <div class="card-body">
+                <canvas id="dailyJobsChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="metrics-grid">
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-tachometer-alt"></i> Performance Metrics</h3>
+        </div>
+        <div class="card-body">
+            <div class="metric-row">
+                <span>Average Duration:</span>
+                <span id="avgDuration">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Median Duration:</span>
+                <span id="medianDuration">-</span>
+            </div>
+            <div class="metric-row">
+                <span>95th Percentile:</span>
+                <span id="p95Duration">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Max Duration:</span>
+                <span id="maxDuration">-</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-chart-area"></i> Runtime Statistics</h3>
+        </div>
+        <div class="card-body">
+            <div class="metric-row">
+                <span>Short Jobs (< 1hr):</span>
+                <span id="shortJobs">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Medium Jobs (1-24hr):</span>
+                <span id="mediumJobs">-</span>
+            </div>
+            <div class="metric-row">
+                <span>Long Jobs (> 24hr):</span>
+                <span id="longJobs">-</span>
+            </div>
+        </div>
+    </div>
+</div>
