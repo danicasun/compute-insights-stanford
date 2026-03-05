@@ -9,15 +9,11 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import {
   Server,
   Activity,
-  Cpu,
   Users,
   TrendingUp,
   RefreshCw,
   Clock,
   Zap,
-  Target,
-  Brain,
-  Leaf,
   Search,
   AlertTriangle,
   HelpCircle,
@@ -29,18 +25,16 @@ import {
   BookOpen,
 } from "lucide-react"
 import { OverviewTab } from "@/components/dashboard/overview-tab"
-import { PerformanceTab } from "@/components/dashboard/performance-tab"
-import { ResourcesTab } from "@/components/dashboard/resources-tab"
-import { UsersTab } from "@/components/dashboard/users-tab"
-import { TrendsTab } from "@/components/dashboard/trends-tab"
-import { EfficiencyTab } from "@/components/dashboard/efficiency-tab"
-import { PredictiveTab } from "@/components/dashboard/predictive-tab"
-import { SustainabilityTab } from "@/components/dashboard/sustainability-tab"
+import { EnergyTab } from "@/components/dashboard/energy-tab"
+import { QueueWalltimeTab } from "@/components/dashboard/queue-walltime-tab"
+import { UsersAccountsTab } from "@/components/dashboard/users-accounts-tab"
+import { TemporalTab } from "@/components/dashboard/temporal-tab"
 import { DocumentationTab } from "@/components/dashboard/documentation-tab"
-import { useSlurmData } from "@/hooks/useSlurmData"
+import { JobForecastTab } from "@/components/dashboard/job-forecast-tab"
+import { useDashboardInsights } from "@/hooks/useDashboardInsights"
 
 export default function Dashboard() {
-  const { data, loading, error, lastUpdated, refreshData } = useSlurmData()
+  const { data, loading, error, lastUpdated, refreshData } = useDashboardInsights()
   const [searchQuery, setSearchQuery] = useState("")
   const [showAlerts, setShowAlerts] = useState(false)
   const [activeTab, setActiveTab] = useState("overview")
@@ -49,31 +43,16 @@ export default function Dashboard() {
     await refreshData()
   }
 
-  const alerts = [
-    {
-      type: "warning",
-      message: "High failure rate detected: 19.33% of jobs failed",
-      action: "View Performance",
-      tab: "performance",
-    },
-    {
-      type: "info",
-      message: "Resource efficiency could be improved by 23.4%",
-      action: "View Efficiency",
-      tab: "efficiency",
-    },
-  ]
+  const alerts: Array<{ type: string; message: string; action: string; tab: string }> = []
 
   const tabDescriptions = {
-    overview: "High-level cluster health and job statistics from real SLURM data",
-    performance: "Job execution metrics and system performance analysis",
-    resources: "CPU, memory, and GPU utilization analysis from cluster data",
-    users: "User activity patterns and top contributors from SLURM records",
-    trends: "Historical patterns and usage trends over time from real data",
-    efficiency: "Resource optimization and waste analysis based on actual usage",
-    predictive: "AI-powered forecasting and predictions from historical data",
-    sustainability: "Resource efficiency and sustainability metrics from cluster performance",
-    documentation: "Comprehensive documentation of data sources, calculations, and assumptions",
+    overview: "Dataset summary and headline energy, queue, and walltime metrics",
+    energy: "Energy consumption breakdowns by job type and user",
+    "queue-walltime": "Queue wait time and requested walltime distributions",
+    "users-accounts": "User and account usage rankings with energy context",
+    temporal: "Daily and hourly patterns in job volume and energy",
+    "job-forecast": "Mock job forecast for energy and emissions predictions",
+    documentation: "Data schema, missingness, and units reference",
   }
 
   return (
@@ -91,7 +70,7 @@ export default function Dashboard() {
                     <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                       Stanford Sherlock
                     </h1>
-                    <p className="text-sm text-muted-foreground font-medium">SLURM Cluster Analytics</p>
+                    <p className="text-sm text-muted-foreground font-medium">TabPFN Dashboard Insights</p>
                   </div>
                 </div>
               </div>
@@ -168,7 +147,7 @@ export default function Dashboard() {
                 </DropdownMenu>
 
                 <div className="text-right hidden sm:block">
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground font-medium">
+                <div className="flex items-center gap-3 text-sm text-muted-foreground font-medium">
                     <Clock className="h-4 w-4" />
                     <span>Last updated: {lastUpdated}</span>
                   </div>
@@ -200,8 +179,8 @@ export default function Dashboard() {
             <div className="flex items-center justify-center py-20">
               <div className="text-center">
                 <RefreshCw className="h-12 w-12 animate-spin mx-auto mb-4 text-primary" />
-                <p className="text-lg font-medium">Loading SLURM data...</p>
-                <p className="text-sm text-muted-foreground">Please wait while we fetch the latest cluster information</p>
+                <p className="text-lg font-medium">Loading dashboard insights...</p>
+                <p className="text-sm text-muted-foreground">Please wait while we fetch the latest dataset snapshot</p>
               </div>
             </div>
           ) : (
@@ -218,7 +197,7 @@ export default function Dashboard() {
               </Tooltip>
             </div>
 
-            <TabsList className="grid w-full grid-cols-4 lg:grid-cols-9 lg:w-fit glass-card border-0 shadow-lg p-2 h-auto gap-1">
+            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-7 lg:w-fit glass-card border-0 shadow-lg p-2 h-auto gap-1">
               <TabsTrigger
                 value="overview"
                 className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
@@ -227,60 +206,46 @@ export default function Dashboard() {
                 <span className="hidden sm:inline font-medium text-xs lg:text-sm">Overview</span>
               </TabsTrigger>
               <TabsTrigger
-                value="performance"
+                value="energy"
                 className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
               >
                 <Zap className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Performance</span>
+                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Energy</span>
               </TabsTrigger>
               <TabsTrigger
-                value="resources"
+                value="queue-walltime"
                 className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
               >
-                <Cpu className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Resources</span>
+                <Clock className="h-4 w-4" />
+                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Queue & Walltime</span>
               </TabsTrigger>
               <TabsTrigger
-                value="users"
+                value="users-accounts"
                 className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
               >
                 <Users className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Users</span>
+                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Users & Accounts</span>
               </TabsTrigger>
               <TabsTrigger
-                value="trends"
+                value="temporal"
                 className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
               >
                 <TrendingUp className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Trends</span>
+                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Temporal</span>
               </TabsTrigger>
               <TabsTrigger
-                value="efficiency"
+                value="job-forecast"
                 className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
               >
-                <Target className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Efficiency</span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="predictive"
-                className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
-              >
-                <Brain className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Predictive</span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="sustainability"
-                className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
-              >
-                <Leaf className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Green</span>
+                <Zap className="h-4 w-4" />
+                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Job Forecast</span>
               </TabsTrigger>
               <TabsTrigger
                 value="documentation"
                 className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
               >
                 <BookOpen className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Docs</span>
+                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Data Quality</span>
               </TabsTrigger>
             </TabsList>
 
@@ -288,32 +253,24 @@ export default function Dashboard() {
               <OverviewTab data={data!} />
             </TabsContent>
 
-            <TabsContent value="performance">
-              <PerformanceTab data={data!} />
+            <TabsContent value="energy">
+              <EnergyTab data={data!} />
             </TabsContent>
 
-            <TabsContent value="resources">
-              <ResourcesTab data={data!} />
+            <TabsContent value="queue-walltime">
+              <QueueWalltimeTab data={data!} />
             </TabsContent>
 
-            <TabsContent value="users">
-              <UsersTab data={data!} />
+            <TabsContent value="users-accounts">
+              <UsersAccountsTab data={data!} />
             </TabsContent>
 
-            <TabsContent value="trends">
-              <TrendsTab data={data!} />
+            <TabsContent value="temporal">
+              <TemporalTab data={data!} />
             </TabsContent>
 
-            <TabsContent value="efficiency">
-              <EfficiencyTab data={data!} />
-            </TabsContent>
-
-            <TabsContent value="predictive">
-              <PredictiveTab data={data!} />
-            </TabsContent>
-
-            <TabsContent value="sustainability">
-              <SustainabilityTab data={data!} />
+            <TabsContent value="job-forecast">
+              <JobForecastTab />
             </TabsContent>
 
             <TabsContent value="documentation">

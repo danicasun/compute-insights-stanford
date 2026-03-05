@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { SlurmData } from '@/types/slurm'
+import { DashboardInsights } from '@/types/dashboard-insights'
 
-export function useSlurmData() {
-  const [data, setData] = useState<SlurmData | null>(null)
+export function useDashboardInsights() {
+  const [data, setData] = useState<DashboardInsights | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [lastUpdated, setLastUpdated] = useState<string>('')
@@ -11,19 +11,17 @@ export function useSlurmData() {
     try {
       setLoading(true)
       setError(null)
-      
+
       const response = await fetch('/api/slurm-data')
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
-      
-      const slurmData = await response.json()
-      
-      // Return the raw SLURM data directly since it already matches our interface
-      setData(slurmData)
+
+      const insightsData = await response.json()
+      setData(insightsData)
       setLastUpdated(new Date().toLocaleString())
     } catch (err) {
-      console.error('Error loading SLURM data:', err)
+      console.error('Error loading dashboard insights:', err)
       setError(err instanceof Error ? err.message : 'Failed to load data')
     } finally {
       setLoading(false)
@@ -43,6 +41,6 @@ export function useSlurmData() {
     loading,
     error,
     lastUpdated,
-    refreshData
+    refreshData,
   }
 }
