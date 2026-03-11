@@ -10,6 +10,7 @@ interface EnergyTabProps {
 export function EnergyTab({ data }: EnergyTabProps) {
   const energyStats = data.distributions.numeric.energy_kWh
   const topEnergyUsers = data.top_users_by_energy.slice(0, 10)
+  const formatRankedUserCode = (rankIndex: number) => `User ${rankIndex + 1}`
 
   return (
     <div className="space-y-6">
@@ -75,7 +76,7 @@ export function EnergyTab({ data }: EnergyTabProps) {
               <div key={user.user} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-muted-foreground">#{index + 1}</span>
-                  <span className="text-sm font-medium">{user.user}</span>
+                  <span className="text-sm font-medium">{formatRankedUserCode(index)}</span>
                 </div>
                 <Badge variant="outline">
                   {user.energy_total_kwh.toLocaleString()} {data.units.energy}

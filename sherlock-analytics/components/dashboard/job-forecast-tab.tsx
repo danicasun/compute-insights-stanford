@@ -301,7 +301,7 @@ export function JobForecastTab() {
       <Card>
         <CardHeader>
           <CardTitle>Prediction Output</CardTitle>
-          <CardDescription>Energy and emissions estimates (mocked for now).</CardDescription>
+          <CardDescription>Energy and emissions estimates.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <Button onClick={handlePrediction} disabled={isPredicting}>
@@ -330,6 +330,30 @@ export function JobForecastTab() {
                   <div className="text-2xl font-bold">{predictionResult.emissionsKgCo2e.toFixed(2)} kg CO2e</div>
                 </CardContent>
               </Card>
+              <div className="md:col-span-2 text-sm text-muted-foreground">
+                Emissions are estimated as energy (kWh) multiplied by grid intensity (g CO2e/kWh),
+                converted to kg CO2e.{" "}
+                {typeof predictionResult.carbonIntensityGco2ePerKwh === "number"
+                  ? `Current intensity used: ${predictionResult.carbonIntensityGco2ePerKwh.toFixed(1)} g CO2e/kWh.`
+                  : "Grid intensity uses the latest available value for the job zone."}
+              </div>
+              <div className="md:col-span-2 text-sm text-muted-foreground">
+                <div>
+                  Carbon intensity (g CO2e/kWh):{" "}
+                  {typeof predictionResult.carbonIntensityGco2ePerKwh === "number"
+                    ? predictionResult.carbonIntensityGco2ePerKwh.toFixed(1)
+                    : "Unavailable"}
+                </div>
+                <div>
+                  Zone: {predictionResult.zone ? predictionResult.zone : "Unavailable"}
+                </div>
+                <div>
+                  Calculation time (UTC):{" "}
+                  {predictionResult.calculationTimestampUtc
+                    ? predictionResult.calculationTimestampUtc
+                    : "Unavailable"}
+                </div>
+              </div>
               {predictionResult.notes?.length ? (
                 <div className="md:col-span-2 flex flex-wrap gap-2">
                   {predictionResult.notes.map((note) => (

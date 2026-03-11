@@ -14,6 +14,8 @@ export function UsersAccountsTab({ data }: UsersAccountsTabProps) {
   const topAccounts = [...data.aggregations.by_account]
     .sort((a, b) => b.job_count - a.job_count)
     .slice(0, 10)
+  const formatRankedUserCode = (rankIndex: number) => `User ${rankIndex + 1}`
+  const formatRankedAccountCode = (rankIndex: number) => `Account ${rankIndex + 1}`
 
   return (
     <div className="space-y-6">
@@ -31,7 +33,7 @@ export function UsersAccountsTab({ data }: UsersAccountsTabProps) {
               <div key={user.user} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-muted-foreground">#{index + 1}</span>
-                  <span className="text-sm font-medium">{user.user}</span>
+                  <span className="text-sm font-medium">{formatRankedUserCode(index)}</span>
                 </div>
                 <div className="text-right">
                   <Badge variant="outline">{user.job_count.toLocaleString()} jobs</Badge>
@@ -57,7 +59,7 @@ export function UsersAccountsTab({ data }: UsersAccountsTabProps) {
               <div key={account.account} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-muted-foreground">#{index + 1}</span>
-                  <span className="text-sm font-medium">{account.account}</span>
+                  <span className="text-sm font-medium">{formatRankedAccountCode(index)}</span>
                 </div>
                 <div className="text-right">
                   <Badge variant="outline">{account.job_count.toLocaleString()} jobs</Badge>

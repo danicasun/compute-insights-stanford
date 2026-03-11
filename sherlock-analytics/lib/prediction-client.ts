@@ -15,29 +15,33 @@ export interface JobPredictionRequest {
 export interface JobPredictionResponse {
   energyKwh: number
   emissionsKgCo2e: number
+  carbonIntensityGco2ePerKwh?: number
+  calculationTimestampUtc?: string
+  zone?: string
   notes?: string[]
 }
 
 export async function requestJobPrediction(
   request: JobPredictionRequest,
 ): Promise<JobPredictionResponse> {
-  const parameters = request.parameters ?? {}
-  const cpuCores = parameters.cpuCores ?? 1
-  const gpuCount = parameters.gpuCount ?? 0
-  const walltimeHours = parameters.walltimeHours ?? 1
+  const response = await fetch("/api/job-prediction", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(request),
+  })
 
-  const energyFromCpu = cpuCores * walltimeHours * 0.05
-  const energyFromGpu = gpuCount * walltimeHours * 0.2
-  const energyKwh = Math.max(0.01, energyFromCpu + energyFromGpu)
-
-  const emissionsKgCo2e = energyKwh * 0.2
-
-  return {
-    energyKwh,
-    emissionsKgCo2e,
-    notes: [
-      "Mock result only. Python service integration pending.",
-      "Emissions factor will come from the carbon intensity API.",
-    ],
+  if (!response.ok) {
+    let errorMessage = "Prediction request failed."
+    try {
+      const errorPayload = (await response.json()) as { error?: string }
+      if (errorPayload?.error) {
+        errorMessage = errorPayload.error
+      }
+    } catch {
+      // Ignore JSON parsing errors and fall back to generic message.
+    }
+    throw new Error(errorMessage)
   }
+
+  return (await response.json()) as JobPredictionResponse
 }
