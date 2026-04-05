@@ -186,37 +186,3 @@ def _parse_gres_gpu_count(normalized_directive: str) -> Optional[int]:
         if segment.isdigit():
             return int(segment)
     return None
-
-
-# Compatibility helpers for estimate_emissions_main.py
-def parse_sbatch_file(sbatch_file: str) -> dict:
-    """Parse a SBATCH file on disk into a dict for CLI usage."""
-    with open(sbatch_file, "r") as file_handle:
-        parameters = parse_sbatch_text(file_handle.read())
-    return {
-        "partition": parameters.partition_name,
-        "nodes": parameters.node_count,
-        "cpus_per_task": parameters.cpu_cores_per_task,
-        "ntasks": parameters.task_count,
-        "gres_gpu": parameters.gpu_count,
-        "mem": parameters.memory_gigabytes_total,
-        "mem_per_cpu": parameters.memory_gigabytes_per_cpu,
-        "time": parameters.walltime_hours,
-        "nodelist": parameters.nodelist,
-    }
-
-
-def normalize_memory(raw_value: str) -> float:
-    """Normalize memory strings to GB units."""
-    normalized = parse_memory_to_gigabytes(raw_value)
-    if normalized is None:
-        raise ValueError(f"Unsupported memory format: {raw_value}")
-    return normalized
-
-
-def parse_time_limit(raw_value: str) -> float:
-    """Parse SLURM time limit into hours."""
-    parsed = parse_walltime_hours(raw_value)
-    if parsed is None:
-        raise ValueError(f"Unsupported time format: {raw_value}")
-    return parsed

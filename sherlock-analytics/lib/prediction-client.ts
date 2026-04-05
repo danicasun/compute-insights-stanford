@@ -10,6 +10,8 @@ export interface JobPredictionParameters {
 export interface JobPredictionRequest {
   sbatchText?: string
   parameters?: JobPredictionParameters
+  /** Optional Electricity Maps zone override (e.g. US-CA). */
+  zone?: string
 }
 
 export interface JobPredictionResponse {

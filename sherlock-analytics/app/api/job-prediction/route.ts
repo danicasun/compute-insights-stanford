@@ -9,7 +9,8 @@ interface JobPredictionProxyResponse {
   notes?: string[]
 }
 
-const DEFAULT_PYTHON_PREDICTION_URL = "http://127.0.0.1:8001/predict"
+const DEFAULT_PYTHON_PREDICTION_URL =
+  "https://energy-estimation-api.vercel.app/predict"
 
 export async function POST(request: Request) {
   let payload: unknown
@@ -28,7 +29,7 @@ export async function POST(request: Request) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(10_000),
+      signal: AbortSignal.timeout(60_000),
     })
   } catch (error) {
     let message =
