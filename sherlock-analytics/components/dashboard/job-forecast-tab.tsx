@@ -19,6 +19,19 @@ const defaultJobPredictionParameters: JobPredictionParameters = {
   walltimeHours: 1,
 }
 
+/** Formats an ISO-8601 instant for display in Pacific time (PST or PDT per US rules). */
+function formatIsoUtcToPacific(isoUtc: string): string {
+  const instant = new Date(isoUtc)
+  if (Number.isNaN(instant.getTime())) {
+    return isoUtc
+  }
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Los_Angeles",
+    dateStyle: "medium",
+    timeStyle: "long",
+  }).format(instant)
+}
+
 function parseWalltimeHours(rawValue: string): number | null {
   const trimmedValue = rawValue.trim()
   if (!trimmedValue) {
@@ -348,9 +361,9 @@ export function JobForecastTab() {
                   Zone: {predictionResult.zone ? predictionResult.zone : "Unavailable"}
                 </div>
                 <div>
-                  Calculation time (UTC):{" "}
+                  Calculation time (Pacific):{" "}
                   {predictionResult.calculationTimestampUtc
-                    ? predictionResult.calculationTimestampUtc
+                    ? formatIsoUtcToPacific(predictionResult.calculationTimestampUtc)
                     : "Unavailable"}
                 </div>
               </div>

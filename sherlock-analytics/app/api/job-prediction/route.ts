@@ -63,11 +63,14 @@ export async function POST(request: Request) {
     )
   }
 
+  const calculationTimestampUtc =
+    pythonPayload.calculation_timestamp_utc ?? new Date().toISOString()
+
   return NextResponse.json({
     energyKwh,
     emissionsKgCo2e,
     carbonIntensityGco2ePerKwh: pythonPayload.carbon_intensity_gco2e_per_kwh,
-    calculationTimestampUtc: pythonPayload.calculation_timestamp_utc,
+    calculationTimestampUtc,
     zone: pythonPayload.zone,
     notes: pythonPayload.notes ?? [],
   })
