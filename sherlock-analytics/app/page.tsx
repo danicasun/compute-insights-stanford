@@ -32,6 +32,7 @@ import { TemporalTab } from "@/components/dashboard/temporal-tab"
 import { DocumentationTab } from "@/components/dashboard/documentation-tab"
 import { JobForecastTab } from "@/components/dashboard/job-forecast-tab"
 import { useDashboardInsights } from "@/hooks/useDashboardInsights"
+import { dashboardTabListClass, dashboardTabTriggerClass } from "@/lib/dashboard-ui"
 
 export default function Dashboard() {
   const { data, loading, error, lastUpdated, refreshData } = useDashboardInsights()
@@ -57,19 +58,17 @@ export default function Dashboard() {
 
   return (
     <TooltipProvider>
-      <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
-        <header className="glass-card border-b-0 sticky top-0 z-50 shadow-lg">
+      <div className="min-h-screen bg-background">
+        <header className="sticky top-0 z-50 border-b border-primary/35 bg-background/95 backdrop-blur-sm">
           <div className="container mx-auto px-8 py-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-gradient-to-br from-primary to-secondary rounded-xl shadow-lg">
-                    <Server className="h-7 w-7 text-primary-foreground" />
+                  <div className="p-3 rounded-lg border border-primary/40 bg-muted/40">
+                    <Server className="h-7 w-7 text-primary" />
                   </div>
                   <div>
-                    <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                      Stanford Sherlock
-                    </h1>
+                    <h1 className="text-3xl font-bold text-foreground">Stanford Sherlock</h1>
                     <p className="text-sm text-muted-foreground font-medium">TabPFN Dashboard Insights</p>
                   </div>
                 </div>
@@ -82,17 +81,17 @@ export default function Dashboard() {
                     placeholder="Search metrics, users, jobs..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 w-64 glass-card border-0 shadow-md"
+                    className="pl-10 w-64 border border-primary/35 bg-background"
                   />
                 </div>
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="outline" size="icon" className="glass-card border-0 shadow-md bg-transparent">
+                    <Button variant="outline" size="icon" className="border-primary/35 bg-transparent">
                       <Filter className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="glass-card border-0 shadow-lg">
+                  <DropdownMenuContent align="end" className="border border-primary/35">
                     <DropdownMenuItem className="gap-2">
                       <Download className="h-4 w-4" />
                       Export Data
@@ -113,7 +112,7 @@ export default function Dashboard() {
                     <Button
                       variant="outline"
                       size="icon"
-                      className="glass-card border-0 shadow-md relative bg-transparent"
+                      className="border-primary/35 relative bg-transparent"
                     >
                       <Bell className="h-4 w-4" />
                       {alerts.length > 0 && (
@@ -121,7 +120,7 @@ export default function Dashboard() {
                       )}
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="glass-card border-0 shadow-lg w-80">
+                  <DropdownMenuContent align="end" className="border border-primary/35 w-80">
                     {alerts.map((alert, index) => (
                       <div key={index} className="p-3 border-b last:border-b-0">
                         <div className="flex items-start gap-2">
@@ -155,7 +154,7 @@ export default function Dashboard() {
                 <Button
                   onClick={handleRefresh}
                   disabled={loading}
-                  className="gap-2 px-6 py-2 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                  className="gap-2 px-6 py-2"
                 >
                   <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
                   <span className="font-semibold">Refresh</span>
@@ -197,55 +196,34 @@ export default function Dashboard() {
               </Tooltip>
             </div>
 
-            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-7 lg:w-fit glass-card border-0 shadow-lg p-2 h-auto gap-1">
-              <TabsTrigger
-                value="overview"
-                className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
-              >
-                <Activity className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Overview</span>
+            <TabsList className={dashboardTabListClass}>
+              <TabsTrigger value="overview" className={dashboardTabTriggerClass}>
+                <Activity className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline text-xs font-medium lg:text-sm">Overview</span>
               </TabsTrigger>
-              <TabsTrigger
-                value="energy"
-                className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
-              >
-                <Zap className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Energy</span>
+              <TabsTrigger value="energy" className={dashboardTabTriggerClass}>
+                <Zap className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline text-xs font-medium lg:text-sm">Energy</span>
               </TabsTrigger>
-              <TabsTrigger
-                value="queue-walltime"
-                className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
-              >
-                <Clock className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Queue & Walltime</span>
+              <TabsTrigger value="queue-walltime" className={dashboardTabTriggerClass}>
+                <Clock className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline text-xs font-medium lg:text-sm">Queue & Walltime</span>
               </TabsTrigger>
-              <TabsTrigger
-                value="users-accounts"
-                className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
-              >
-                <Users className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Users & Accounts</span>
+              <TabsTrigger value="users-accounts" className={dashboardTabTriggerClass}>
+                <Users className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline text-xs font-medium lg:text-sm">Users & Accounts</span>
               </TabsTrigger>
-              <TabsTrigger
-                value="temporal"
-                className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
-              >
-                <TrendingUp className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Temporal</span>
+              <TabsTrigger value="temporal" className={dashboardTabTriggerClass}>
+                <TrendingUp className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline text-xs font-medium lg:text-sm">Temporal</span>
               </TabsTrigger>
-              <TabsTrigger
-                value="job-forecast"
-                className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
-              >
-                <Zap className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Job Forecast</span>
+              <TabsTrigger value="job-forecast" className={dashboardTabTriggerClass}>
+                <Zap className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline text-xs font-medium lg:text-sm">Job Forecast</span>
               </TabsTrigger>
-              <TabsTrigger
-                value="documentation"
-                className="gap-2 px-4 py-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg transition-all duration-300"
-              >
-                <BookOpen className="h-4 w-4" />
-                <span className="hidden sm:inline font-medium text-xs lg:text-sm">Data Quality</span>
+              <TabsTrigger value="documentation" className={dashboardTabTriggerClass}>
+                <BookOpen className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline text-xs font-medium lg:text-sm">Data Quality</span>
               </TabsTrigger>
             </TabsList>
 

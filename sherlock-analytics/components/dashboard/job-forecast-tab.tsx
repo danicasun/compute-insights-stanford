@@ -208,11 +208,11 @@ export function JobForecastTab() {
               onChange={(event) => setSbatchText(event.target.value)}
               placeholder="#SBATCH --partition=serc\n#SBATCH --cpus-per-task=8\n#SBATCH --mem=32G\n#SBATCH --time=02:00:00"
               className={cn(
-                "min-h-[200px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs",
-                "placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+                "min-h-[200px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-none",
+                "placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-primary/30 focus-visible:ring-[3px]",
               )}
             />
-            <Button variant="secondary" onClick={handleParseSbatch}>
+            <Button variant="default" onClick={handleParseSbatch}>
               Parse SBATCH
             </Button>
           </CardContent>

@@ -87,6 +87,13 @@ export interface DashboardInsights {
       energy_total_kwh: number
       energy_mean_kwh: number
     }>
+    /** Sparse UTC (day × hour) buckets for heatmaps; omit or [] if unavailable */
+    by_day_hour?: Array<{
+      start_day: string
+      start_hour: number
+      job_count: number
+      energy_total_kwh: number
+    }>
   }
   distributions: {
     numeric: Record<string, SummaryStats>

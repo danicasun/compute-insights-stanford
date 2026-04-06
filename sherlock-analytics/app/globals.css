@@ -23,7 +23,7 @@
   --destructive-foreground: oklch(1 0 0); /* #ffffff */
   --border: oklch(0.922 0 0 / 0.3); /* rgba(229, 231, 235, 0.3) - subtle borders */
   --input: oklch(0.985 0.005 200); /* #f8fafc */
-  --ring: oklch(0.646 0.222 264.376 / 0.5); /* rgba(99, 102, 241, 0.5) */
+  --ring: oklch(0.35 0.15 200 / 0.45); /* primary teal focus ring */
   --chart-1: oklch(0.7 0.15 240); /* #60a5fa */
   --chart-2: oklch(0.646 0.222 264.376); /* #3b82f6 */
   --chart-3: oklch(0.6 0.25 250); /* #2563eb */
@@ -59,7 +59,7 @@
   --destructive-foreground: oklch(0.637 0.237 25.331);
   --border: oklch(0.2 0 0 / 0.3);
   --input: oklch(0.15 0 0);
-  --ring: oklch(0.439 0 0);
+  --ring: oklch(0.5 0.2 200 / 0.45);
   --chart-1: oklch(0.7 0.15 240);
   --chart-2: oklch(0.646 0.222 264.376);
   --chart-3: oklch(0.6 0.25 250);
@@ -171,11 +171,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(99, 102, 241, 0.3);
+    background: oklch(0.35 0.15 200 / 0.35);
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(99, 102, 241, 0.5);
+    background: oklch(0.35 0.15 200 / 0.55);
   }
 }

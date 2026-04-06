@@ -16,7 +16,7 @@ export function EnergyTab({ data }: EnergyTabProps) {
     <div className="space-y-6">
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {data.job_type_breakdown.map((jobType) => (
-          <Card key={jobType.job_type} className="border-l-4 border-l-chart-2">
+          <Card key={jobType.job_type}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{jobType.job_type} Jobs</CardTitle>
               <Zap className="h-4 w-4 text-muted-foreground" />

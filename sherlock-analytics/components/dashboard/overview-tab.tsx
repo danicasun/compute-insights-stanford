@@ -18,8 +18,66 @@ export function OverviewTab({ data }: OverviewTabProps) {
 
   return (
     <div className="space-y-6">
+      <Card className="min-w-0 overflow-hidden">
+        <CardHeader>
+          <CardTitle>About this project</CardTitle>
+          <CardDescription>Mission, dashboard goals, and what each tab shows</CardDescription>
+        </CardHeader>
+        <CardContent className="min-w-0 space-y-4 text-sm leading-relaxed text-muted-foreground">
+          <div className="space-y-2 text-foreground">
+            <p>
+              This project explores how Stanford’s research computing infrastructure can reduce energy use and
+              emissions without compromising research quality, efficiency, or user experience. Rather than imposing
+              restrictions, the goal is to better understand how researchers schedule and run jobs—and to surface
+              insights that enable smarter, more sustainable decisions.
+            </p>
+            <p>
+              This dashboard provides visibility into job patterns, energy usage, and system behavior across the cluster. It is designed to
+              help identify inefficiencies, highlight opportunities for low-impact scheduling, and support the
+              development of opt-in tools such as emissions-aware recommendations, scheduling nudges, and
+              transparency dashboards. Ultimately, it aims to make sustainable computing intuitive, data-driven, and
+              aligned with researchers’ workflows.
+            </p>
+          </div>
+          <div>
+            <p className="mb-2 font-medium text-foreground">What each tab shows</p>
+            <ul className="list-inside list-disc space-y-1.5 [overflow-wrap:anywhere] pl-0.5">
+              <li>
+                <span className="font-medium text-foreground">Overview</span> — Snapshot of the loaded dataset:
+                job counts, users, time range, and headline energy, queue, and walltime summaries (this page).
+              </li>
+              <li>
+                <span className="font-medium text-foreground">Energy</span> — Energy use by job type and top users;
+                distribution-style stats for per-job energy.
+              </li>
+              <li>
+                <span className="font-medium text-foreground">Queue &amp; Walltime</span> — Queue wait and requested
+                walltime distributions; top job states with energy and queue context.
+              </li>
+              <li>
+                <span className="font-medium text-foreground">Users &amp; Accounts</span> — Rankings of users and
+                accounts by job volume with mean energy per job.
+              </li>
+              <li>
+                <span className="font-medium text-foreground">Temporal</span> — How jobs and energy vary by UTC day
+                and hour: volume vs. mean energy, efficiency (energy per job), rolling trends, and hour×day patterns
+                when available.
+              </li>
+              <li>
+                <span className="font-medium text-foreground">Job Forecast</span> — Estimate energy and emissions from
+                SBATCH or typed job parameters (prediction API).
+              </li>
+              <li>
+                <span className="font-medium text-foreground">Data Quality</span> — Schema, units, missingness, and
+                record metadata for the insights JSON behind the dashboard.
+              </li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="border-l-4 border-l-chart-4">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Jobs</CardTitle>
             <Activity className="h-4 w-4 text-muted-foreground" />
@@ -30,7 +88,7 @@ export function OverviewTab({ data }: OverviewTabProps) {
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-chart-1">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Unique Users</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
@@ -41,7 +99,7 @@ export function OverviewTab({ data }: OverviewTabProps) {
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-chart-2">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Time Range</CardTitle>
             <Calendar className="h-4 w-4 text-muted-foreground" />
@@ -54,7 +112,7 @@ export function OverviewTab({ data }: OverviewTabProps) {
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-chart-3">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Energy Mean</CardTitle>
             <Zap className="h-4 w-4 text-muted-foreground" />
