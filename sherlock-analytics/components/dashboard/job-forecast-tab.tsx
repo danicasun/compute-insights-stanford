@@ -245,7 +245,8 @@ export function JobForecastTab() {
                 onChange={(event) =>
                   setJobPredictionParameters((previous) => ({
                     ...previous,
-                    nodeCount: Number(event.target.value || 0),
+                    nodeCount:
+                      event.target.value === "" ? undefined : Number(event.target.value),
                   }))
                 }
               />
@@ -259,7 +260,8 @@ export function JobForecastTab() {
                 onChange={(event) =>
                   setJobPredictionParameters((previous) => ({
                     ...previous,
-                    cpuCores: Number(event.target.value || 0),
+                    cpuCores:
+                      event.target.value === "" ? undefined : Number(event.target.value),
                   }))
                 }
               />
@@ -273,7 +275,8 @@ export function JobForecastTab() {
                 onChange={(event) =>
                   setJobPredictionParameters((previous) => ({
                     ...previous,
-                    gpuCount: Number(event.target.value || 0),
+                    gpuCount:
+                      event.target.value === "" ? undefined : Number(event.target.value),
                   }))
                 }
               />
@@ -287,7 +290,8 @@ export function JobForecastTab() {
                 onChange={(event) =>
                   setJobPredictionParameters((previous) => ({
                     ...previous,
-                    memoryGigabytes: Number(event.target.value || 0),
+                    memoryGigabytes:
+                      event.target.value === "" ? undefined : Number(event.target.value),
                   }))
                 }
               />
@@ -302,7 +306,8 @@ export function JobForecastTab() {
                 onChange={(event) =>
                   setJobPredictionParameters((previous) => ({
                     ...previous,
-                    walltimeHours: Number(event.target.value || 0),
+                    walltimeHours:
+                      event.target.value === "" ? undefined : Number(event.target.value),
                   }))
                 }
               />
