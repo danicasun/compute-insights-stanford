@@ -27,15 +27,24 @@ def parse_walltime_hours(raw_value: str) -> Optional[float]:
     if not trimmed_value:
         return None
 
-    day_split = trimmed_value.split("-")
     days = 0
     time_part = trimmed_value
-    if len(day_split) == 2:
+    if "-" in trimmed_value:
+        day_split = trimmed_value.split("-", 1)
         try:
             days = int(day_split[0])
         except ValueError:
             return None
         time_part = day_split[1]
+
+    if ":" not in time_part:
+        try:
+            base_value = int(time_part)
+        except ValueError:
+            return None
+        hours = base_value if days > 0 else 0
+        minutes = 0 if days > 0 else base_value
+        return days * 24 + hours + minutes / 60
 
     time_segments = time_part.split(":")
     if any(segment.strip() == "" for segment in time_segments):
@@ -52,9 +61,10 @@ def parse_walltime_hours(raw_value: str) -> Optional[float]:
     if len(numeric_segments) == 3:
         hours, minutes, seconds = numeric_segments
     elif len(numeric_segments) == 2:
-        hours, minutes = numeric_segments
-    elif len(numeric_segments) == 1:
-        hours = numeric_segments[0]
+        if days > 0:
+            hours, minutes = numeric_segments
+        else:
+            minutes, seconds = numeric_segments
     else:
         return None
 

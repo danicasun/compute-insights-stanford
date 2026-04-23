@@ -19,32 +19,31 @@ const defaultJobPredictionParameters: JobPredictionParameters = {
   walltimeHours: 1,
 }
 
-/** Formats an ISO-8601 instant for display in Pacific time (PST or PDT per US rules). */
-function formatIsoUtcToPacific(isoUtc: string): string {
-  const instant = new Date(isoUtc)
-  if (Number.isNaN(instant.getTime())) {
-    return isoUtc
-  }
-  return new Intl.DateTimeFormat("en-US", {
-    timeZone: "America/Los_Angeles",
-    dateStyle: "medium",
-    timeStyle: "long",
-  }).format(instant)
-}
-
 function parseWalltimeHours(rawValue: string): number | null {
   const trimmedValue = rawValue.trim()
   if (!trimmedValue) {
     return null
   }
 
-  const daySplit = trimmedValue.split("-")
   let days = 0
   let timePart = trimmedValue
-
-  if (daySplit.length === 2) {
+  if (trimmedValue.includes("-")) {
+    const daySplit = trimmedValue.split("-", 2)
     days = Number(daySplit[0])
+    if (Number.isNaN(days)) {
+      return null
+    }
     timePart = daySplit[1]
+  }
+
+  if (!timePart.includes(":")) {
+    const baseValue = Number(timePart)
+    if (Number.isNaN(baseValue)) {
+      return null
+    }
+    const hours = days > 0 ? baseValue : 0
+    const minutes = days > 0 ? 0 : baseValue
+    return days * 24 + hours + minutes / 60
   }
 
   const timeSegments = timePart.split(":").map(Number)
@@ -59,9 +58,13 @@ function parseWalltimeHours(rawValue: string): number | null {
   if (timeSegments.length === 3) {
     ;[hours, minutes, seconds] = timeSegments
   } else if (timeSegments.length === 2) {
-    ;[hours, minutes] = timeSegments
-  } else if (timeSegments.length === 1) {
-    hours = timeSegments[0]
+    if (days > 0) {
+      ;[hours, minutes] = timeSegments
+    } else {
+      ;[minutes, seconds] = timeSegments
+    }
+  } else {
+    return null
   }
 
   return days * 24 + hours + minutes / 60 + seconds / 3600
@@ -334,7 +337,7 @@ export function JobForecastTab() {
             <div className="grid gap-4 md:grid-cols-2">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-sm font-medium">Energy</CardTitle>
+                  <CardTitle className="text-sm font-medium">Facility Energy (PUE applied)</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{predictionResult.energyKwh.toFixed(2)} kWh</div>
@@ -342,15 +345,25 @@ export function JobForecastTab() {
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-sm font-medium">Emissions</CardTitle>
+                  <CardTitle className="text-sm font-medium">Facility Emissions (PUE applied)</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{predictionResult.emissionsKgCo2e.toFixed(2)} kg CO2e</div>
                 </CardContent>
               </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-sm font-medium">PUE</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">
+                    {typeof predictionResult.pue === "number" ? predictionResult.pue.toFixed(3) : "Unavailable"}
+                  </div>
+                </CardContent>
+              </Card>
               <div className="md:col-span-2 text-sm text-muted-foreground">
-                Emissions are estimated as energy (kWh) multiplied by grid intensity (g CO2e/kWh),
-                converted to kg CO2e.{" "}
+                Emissions are estimated as facility energy (kWh, PUE applied) multiplied by grid
+                intensity (g CO2e/kWh), converted to kg CO2e.{" "}
                 {typeof predictionResult.carbonIntensityGco2ePerKwh === "number"
                   ? `Current intensity used: ${predictionResult.carbonIntensityGco2ePerKwh.toFixed(1)} g CO2e/kWh.`
                   : "Grid intensity uses the latest available value for the job zone."}
@@ -363,12 +376,24 @@ export function JobForecastTab() {
                     : "Unavailable"}
                 </div>
                 <div>
+                  Resolved nodelist:{" "}
+                  {predictionResult.inputs?.resolved_nodelist
+                    ? predictionResult.inputs.resolved_nodelist
+                    : "Unavailable"}
+                </div>
+                <div>
+                  Allocated nodes:{" "}
+                  {predictionResult.inputs?.allocated_node_names?.length
+                    ? predictionResult.inputs.allocated_node_names.join(", ")
+                    : "Unavailable"}
+                </div>
+                <div>
                   Zone: {predictionResult.zone ? predictionResult.zone : "Unavailable"}
                 </div>
                 <div>
-                  Calculation time (Pacific):{" "}
+                  Calculation time (UTC):{" "}
                   {predictionResult.calculationTimestampUtc
-                    ? formatIsoUtcToPacific(predictionResult.calculationTimestampUtc)
+                    ? predictionResult.calculationTimestampUtc
                     : "Unavailable"}
                 </div>
               </div>

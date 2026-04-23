@@ -19,6 +19,11 @@ export interface JobPredictionResponse {
   emissionsKgCo2e: number
   carbonIntensityGco2ePerKwh?: number
   calculationTimestampUtc?: string
+  pue?: number
+  inputs?: {
+    resolved_nodelist?: string | null
+    allocated_node_names?: string[]
+  }
   zone?: string
   notes?: string[]
 }

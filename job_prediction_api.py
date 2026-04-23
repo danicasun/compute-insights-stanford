@@ -3,7 +3,11 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from pathlib import Path
+import csv
+import os
+import re
+from typing import Any, Dict, List, Optional, Tuple
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -40,7 +44,9 @@ class JobPredictionResponse(BaseModel):
     emissions_gco2e: float
     power_watts: float
     carbon_intensity_gco2e_per_kwh: float
+    pue: float
     zone: str
+    calculation_timestamp_utc: str
     inputs: Dict[str, Any]
     notes: List[str]
 
@@ -82,6 +88,19 @@ def _parse_request_payload(payload: Dict[str, Any]) -> Dict[str, Any]:
 
     zone = zone_override or _resolve_zone(parsed_sbatch)
 
+    resolved_nodelist, allocated_node_names = _resolve_nodelist(parsed_sbatch)
+    inventory_totals, inventory_missing = _lookup_inventory_totals(allocated_node_names)
+    notes: List[str] = []
+
+    if inventory_missing:
+        notes.append(
+            f"Node inventory missing for {len(inventory_missing)} host(s); fallback assumptions used."
+        )
+
+    if inventory_totals:
+        cpu_cores = inventory_totals[0]
+        gpu_count = inventory_totals[1]
+
     return {
         "cpu_cores": cpu_cores,
         "gpu_count": gpu_count,
@@ -90,6 +109,9 @@ def _parse_request_payload(payload: Dict[str, Any]) -> Dict[str, Any]:
         "memory_gigabytes": memory_gigabytes,
         "walltime_hours": walltime_hours,
         "zone": zone,
+        "resolved_nodelist": resolved_nodelist,
+        "allocated_node_names": allocated_node_names,
+        "notes": notes,
     }
 
 
@@ -155,27 +177,34 @@ def _coalesce_str(*values: Optional[Any]) -> Optional[str]:
 
 
 def _build_prediction_response(inputs: Dict[str, Any]) -> Dict[str, Any]:
+    pue = 1.287
     carbon_intensity = get_carbon_intensity(inputs["zone"])
     if carbon_intensity is None:
         carbon_intensity = 0.0
 
-    results = estimate_emissions(
+    it_results = estimate_emissions(
         inputs["cpu_cores"],
         inputs["memory_gigabytes"],
         inputs["walltime_hours"],
         carbon_intensity,
     )
 
-    notes = []
+    facility_power_watts = it_results["power_watts"] * pue
+    facility_energy_kwh = it_results["energy_kwh"] * pue
+    facility_emissions_gco2e = facility_energy_kwh * carbon_intensity
+    facility_emissions_kgco2e = facility_emissions_gco2e / 1000.0
+
+    notes = list(inputs.get("notes", []))
     if inputs.get("gpu_count", 0) > 0:
         notes.append("GPU power is not included in the current power model.")
 
     return {
-        "energy_kwh": results["energy_kwh"],
-        "emissions_kgco2e": results["emissions_kgco2e"],
-        "emissions_gco2e": results["emissions_gco2e"],
-        "power_watts": results["power_watts"],
+        "energy_kwh": facility_energy_kwh,
+        "emissions_kgco2e": facility_emissions_kgco2e,
+        "emissions_gco2e": facility_emissions_gco2e,
+        "power_watts": facility_power_watts,
         "carbon_intensity_gco2e_per_kwh": carbon_intensity,
+        "pue": pue,
         "zone": inputs["zone"],
         "calculation_timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "inputs": {
@@ -185,6 +214,8 @@ def _build_prediction_response(inputs: Dict[str, Any]) -> Dict[str, Any]:
             "partition_name": inputs["partition_name"],
             "memory_gigabytes": inputs["memory_gigabytes"],
             "walltime_hours": inputs["walltime_hours"],
+            "resolved_nodelist": inputs.get("resolved_nodelist"),
+            "allocated_node_names": inputs.get("allocated_node_names", []),
         },
         "notes": notes,
     }
@@ -211,6 +242,83 @@ def _model_to_dict(model: BaseModel) -> Dict[str, Any]:
     if hasattr(model, "model_dump"):
         return model.model_dump()
     return model.dict()
+
+
+def _resolve_nodelist(parsed_sbatch: Optional[SbatchParameters]) -> Tuple[Optional[str], List[str]]:
+    if not parsed_sbatch or not parsed_sbatch.nodelist:
+        return None, []
+    resolved = _expand_nodelist(parsed_sbatch.nodelist)
+    return ",".join(resolved) if resolved else parsed_sbatch.nodelist, resolved
+
+
+def _expand_nodelist(nodelist: str) -> List[str]:
+    expanded: List[str] = []
+    for part in nodelist.split(","):
+        part = part.strip()
+        if not part:
+            continue
+        match = re.match(r"^(?P<prefix>[^\[]+)\[(?P<ranges>[^\]]+)\]$", part)
+        if not match:
+            expanded.append(part)
+            continue
+        prefix = match.group("prefix")
+        for block in match.group("ranges").split(","):
+            if "-" in block:
+                start_str, end_str = block.split("-", 1)
+                width = max(len(start_str), len(end_str))
+                try:
+                    start = int(start_str)
+                    end = int(end_str)
+                except ValueError:
+                    continue
+                for value in range(start, end + 1):
+                    expanded.append(f"{prefix}{value:0{width}d}")
+            else:
+                expanded.append(f"{prefix}{block}")
+    return expanded
+
+
+def _lookup_inventory_totals(node_names: List[str]) -> Tuple[Optional[Tuple[int, int]], List[str]]:
+    if not node_names:
+        return None, []
+
+    inventory_path = Path(
+        os.environ.get("SHERLOCK_INVENTORY_CSV", "sherlock-analytics/sherlock_all_machines.csv")
+    )
+    if not inventory_path.exists():
+        return None, node_names
+
+    inventory: Dict[str, Tuple[int, int]] = {}
+    try:
+        with inventory_path.open("r", newline="") as handle:
+            reader = csv.DictReader(handle)
+            for row in reader:
+                node = row.get("node")
+                if not node:
+                    continue
+                try:
+                    cpu_count = int(row.get("num_cpus", "0") or 0)
+                    gpu_count = int(row.get("num_gpus", "0") or 0)
+                except ValueError:
+                    continue
+                inventory[node] = (cpu_count, gpu_count)
+    except OSError:
+        return None, node_names
+
+    total_cpus = 0
+    total_gpus = 0
+    missing: List[str] = []
+    for node in node_names:
+        if node in inventory:
+            cpu_count, gpu_count = inventory[node]
+            total_cpus += cpu_count
+            total_gpus += gpu_count
+        else:
+            missing.append(node)
+
+    if total_cpus == 0 and total_gpus == 0:
+        return None, missing
+    return (total_cpus, total_gpus), missing
 
 
 if __name__ == "__main__":

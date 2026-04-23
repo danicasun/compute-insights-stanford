@@ -5,6 +5,11 @@ interface JobPredictionProxyResponse {
   emissions_kgco2e?: number
   carbon_intensity_gco2e_per_kwh?: number
   calculation_timestamp_utc?: string
+  pue?: number
+  inputs?: {
+    resolved_nodelist?: string | null
+    allocated_node_names?: string[]
+  }
   zone?: string
   notes?: string[]
 }
@@ -71,6 +76,8 @@ export async function POST(request: Request) {
     emissionsKgCo2e,
     carbonIntensityGco2ePerKwh: pythonPayload.carbon_intensity_gco2e_per_kwh,
     calculationTimestampUtc,
+    pue: pythonPayload.pue,
+    inputs: pythonPayload.inputs,
     zone: pythonPayload.zone,
     notes: pythonPayload.notes ?? [],
   })
