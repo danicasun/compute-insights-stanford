@@ -2,9 +2,6 @@
 
 import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import {
   Server,
@@ -14,14 +11,8 @@ import {
   RefreshCw,
   Clock,
   Zap,
-  Search,
   AlertTriangle,
   HelpCircle,
-  Download,
-  Share,
-  BookmarkPlus,
-  Filter,
-  Bell,
   BookOpen,
 } from "lucide-react"
 import { OverviewTab } from "@/components/dashboard/overview-tab"
@@ -35,16 +26,8 @@ import { useDashboardInsights } from "@/hooks/useDashboardInsights"
 import { dashboardTabListClass, dashboardTabTriggerClass } from "@/lib/dashboard-ui"
 
 export default function Dashboard() {
-  const { data, loading, error, lastUpdated, refreshData } = useDashboardInsights()
-  const [searchQuery, setSearchQuery] = useState("")
-  const [showAlerts, setShowAlerts] = useState(false)
+  const { data, loading, error, lastUpdated } = useDashboardInsights()
   const [activeTab, setActiveTab] = useState("overview")
-
-  const handleRefresh = async () => {
-    await refreshData()
-  }
-
-  const alerts: Array<{ type: string; message: string; action: string; tab: string }> = []
 
   const tabDescriptions = {
     overview: "Dataset summary and headline energy, queue, and walltime metrics",
@@ -75,90 +58,12 @@ export default function Dashboard() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="relative hidden md:block">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input
-                    placeholder="Search metrics, users, jobs..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 w-64 border border-primary/35 bg-background"
-                  />
-                </div>
-
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="outline" size="icon" className="border-primary/35 bg-transparent">
-                      <Filter className="h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="border border-primary/35">
-                    <DropdownMenuItem className="gap-2">
-                      <Download className="h-4 w-4" />
-                      Export Data
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="gap-2">
-                      <Share className="h-4 w-4" />
-                      Share Dashboard
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="gap-2">
-                      <BookmarkPlus className="h-4 w-4" />
-                      Save View
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-
-                <DropdownMenu open={showAlerts} onOpenChange={setShowAlerts}>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="border-primary/35 relative bg-transparent"
-                    >
-                      <Bell className="h-4 w-4" />
-                      {alerts.length > 0 && (
-                        <span className="absolute -top-1 -right-1 h-3 w-3 bg-destructive rounded-full"></span>
-                      )}
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="border border-primary/35 w-80">
-                    {alerts.map((alert, index) => (
-                      <div key={index} className="p-3 border-b last:border-b-0">
-                        <div className="flex items-start gap-2">
-                          <AlertTriangle className="h-4 w-4 text-amber-500 mt-0.5 flex-shrink-0" />
-                          <div className="flex-1">
-                            <p className="text-sm">{alert.message}</p>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="mt-2 h-7 text-xs bg-transparent"
-                              onClick={() => {
-                                setActiveTab(alert.tab)
-                                setShowAlerts(false)
-                              }}
-                            >
-                              {alert.action}
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-
                 <div className="text-right hidden sm:block">
-                <div className="flex items-center gap-3 text-sm text-muted-foreground font-medium">
+                  <div className="flex items-center gap-3 text-sm text-muted-foreground font-medium">
                     <Clock className="h-4 w-4" />
                     <span>Last updated: {lastUpdated}</span>
                   </div>
                 </div>
-                <Button
-                  onClick={handleRefresh}
-                  disabled={loading}
-                  className="gap-2 px-6 py-2"
-                >
-                  <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
-                  <span className="font-semibold">Refresh</span>
-                </Button>
               </div>
             </div>
           </div>

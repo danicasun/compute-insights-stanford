@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 
 /** Tab bar container — teal border, muted inactive labels */
 export const dashboardTabListClass =
-  "grid h-auto w-full grid-cols-3 gap-1 rounded-lg border border-primary/40 bg-muted/25 p-1 text-muted-foreground lg:grid-cols-7 lg:w-fit"
+  "grid h-auto w-full grid-cols-3 gap-1 rounded-lg border border-primary/40 bg-muted/25 p-1 text-muted-foreground lg:grid-cols-7"
 
 /**
  * Tab triggers: inactive muted; active = teal border + ring (matches card chrome).
